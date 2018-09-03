@@ -45,8 +45,12 @@ class WeatherController < ApplicationController
   def means_for_day(day_forecast)
     means = { midday: { temperature: nil, weather: nil }, midnight: { temperature: nil, weather: nil } }
     day_forecast.reverse!
-    means['midnight'] = mean_temperature_weather(day_forecast[0, 4])
-    means['midday'] = mean_temperature_weather(day_forecast[4, day_forecast.size])
+    if day_forecast.size <= 4
+      means['midnight'] = mean_temperature_weather(day_forecast[0, day_forecast.size])
+    else
+      means['midnight'] = mean_temperature_weather(day_forecast[0, 4])
+      means['midday'] = mean_temperature_weather(day_forecast[4, day_forecast.size])
+    end
     means
   end
 
