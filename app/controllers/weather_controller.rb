@@ -9,7 +9,7 @@ class WeatherController < ApplicationController
 
   def cities
     city_name = "#{name_param}%"
-    render json: City.where("name ilike ?", city_name)
+    render json: City.where("name ilike ?", city_name).order(:name)
   end
 
   private
