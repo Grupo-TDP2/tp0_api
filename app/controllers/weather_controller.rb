@@ -55,7 +55,7 @@ class WeatherController < ApplicationController
   end
 
   def mean_temperature_weather(forecast_array)
-    { temperature: forecast_array.sum { |f| f['main']['temp'] } / forecast_array.size,
+    { temperature: (forecast_array.sum { |f| f['main']['temp'] } / forecast_array.size).round,
       weather: forecast_array.last['weather'].first['id'] } # We take the last one since it's the most recent one
   end
 
