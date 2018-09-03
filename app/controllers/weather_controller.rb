@@ -1,7 +1,7 @@
 class WeatherController < ApplicationController
-  OWM_WEATHER = 'http://api.openweathermap.org/data/2.5/weather'.freeze
+  OWM_FORECAST = 'http://api.openweathermap.org/data/2.5/forecast'.freeze
   def index
-    request = OWM_WEATHER + "?q=#{index_params}&app_id=#{app_id}"
+    request = OWM_FORECAST + "?q=#{index_params}&app_id=#{app_id}"
   end
 
   def cities
